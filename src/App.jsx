@@ -1,0 +1,39 @@
+import "./App.css";
+import { Toaster } from "react-hot-toast";
+import { LandingLayout } from "./layout";
+import { Voucher } from "./pages";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+
+
+function App() {
+  const client = new QueryClient();
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<LandingLayout />}>
+          <Route index element={<Voucher />} />
+        </Route>
+      </>
+    )
+  );
+
+  return (
+    <>
+      <QueryClientProvider client={client}>
+        <Toaster position="top-center" />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </>
+  );
+}
+
+export default App;
