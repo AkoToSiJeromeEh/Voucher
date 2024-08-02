@@ -55,7 +55,6 @@ p, h1, h2, h3, h4, h5, h6 {
 
 th,td{
  padding: 1.25rem; 
- width: 100%;
  
 }
 th{
@@ -63,13 +62,4 @@ th{
 }
 td {
   font-weight: 500;
-}
-
-::-webkit-scrollbar {
-  width: 0;  
-  background: transparent; 
-}
-
-::-webkit-scrollbar-thumb {
-  background: #FF0000;
 }

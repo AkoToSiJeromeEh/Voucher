@@ -1,24 +1,19 @@
 import { useQuery } from "react-query";
 import { useQueryClient, useMutation } from "react-query";
 import { axiosRequest } from "../service";
-import toast from "react-hot-toast";
 
 const useMutationAsync = (request, queryKeys = []) => {
   const queryClient = useQueryClient();
 
   const mutationAsync = useMutation(
-    async (newAnnouncement) => {
-      const response = await axiosRequest(
-        request.method,
-        request.url,
-        newAnnouncement
-      );
-      return response.data;
+    async (data) => {
+      const response = await axiosRequest(request.method, request.url, data);
+      return response;
     },
     {
-      onSuccess: (newAnnouncement) => {
+      onSuccess: (data) => {
         if (request.method === "patch") {
-          queryClient.setQueryData(queryKeys, newAnnouncement);
+          queryClient.setQueryData(queryKeys, data);
         } else {
           queryClient.invalidateQueries(queryKeys);
         }
@@ -28,41 +23,37 @@ const useMutationAsync = (request, queryKeys = []) => {
 
   return { mutationAsync };
 };
-
-const FetchAdminPost = (
-  isArchived,
-  filterValues = "",
-  page = "",
-  totalPage = "",
-  search = ""
-) => {
+const FetchVoucherData = () => {
   const {
-    data: announcementsData,
-    isLoading: announcementsLoading,
-    isFetching: announcementsFetching,
-    error: announcementsError,
-    refetch: refetchAnnouncements,
+    data: voucherData,
+    isLoading: voucherLoading,
+    isFetching: voucherFetching,
+    error: voucherError,
+    refetch: refetchVoucher,
   } = useQuery(
     ["announcements"],
     () =>
       axiosRequest(
         "get",
-        `/api/announcements/getAnnouncements?isArchived=${isArchived}&category=${filterValues}&page=${page}&pageSize=${totalPage}&search=${search}`
+        `/api/voucher/getVoucher`
       ),
     {
       retry: 3,
+      // staleTime ,
+      // cacheTime ,
+      // refetchOnWindowFocus
     }
   );
-  if (announcementsError) {
-    throw new Error("Couldn't find announcements");
+  if (voucherError) {
+    throw new Error("Couldn't fetch voucher data");
   }
 
   return {
-    announcementsData,
-    announcementsFetching,
-    announcementsLoading,
-    announcementsError,
-    refetchAnnouncements,
+    voucherData,
+    voucherFetching,
+    voucherLoading,
+    voucherError,
+    refetchVoucher,
   };
 };
 
@@ -99,4 +90,4 @@ const FetchAdminPost = (
 // const findSelectedItemById = (dataArray, itemId) => {
 // 	return dataArray?.find((item) => itemId === item._id);
 //   };
-export { useMutationAsync, FetchAdminPost };
+export { useMutationAsync, FetchVoucherData };

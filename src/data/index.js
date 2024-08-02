@@ -3,13 +3,10 @@ const tableHeadData = [
     name: "NO",
   },
   {
-    name: "VA",
-  },
-  {
     name: "Amount",
   },
   {
-    name: "Payment",
+    name: "VN",
   },
   {
     name: "Date",
@@ -18,83 +15,126 @@ const tableHeadData = [
     name: "Address",
   },
   {
-    name: "Description",
+    name: "Payment",
+  },
+  {
+    name: "Payment Desc",
+  },
+  {
+    name: "Invoice",
+  },
+  {
+    name: "Check NO",
+  },
+  {
+    name: "Accounting",
   },
   {
     name: "Prepared By",
   },
   {
-    name: "Approve By",
-  },
-  {
-    name: "Recieve By",
+    name: "Printed Name",
   },
 ];
 
-const fakeTableData = [
+const initialCreateVoucherValues = {
+  no: "",
+  vn: "",
+  amount: "",
+  date: "",
+  paymentTo: "",
+  invoiceNo: "",
+  checkNumber: "",
+  preparedBy: "",
+  descOfPayment: "",
+  accounting: "",
+  printedName: "",
+  address: "",
+};
+
+const VoucherInfoFieldsData = [
   {
-    NO: 1,
-    VA: "VA1",
-    Amount: "456.78",
-    Payment: "Credit Card",
-    Date: "07/14/2022",
-    Address: "123 Main St",
-    Description: "Payment for services",
-    "Prepared By": "John Doe",
-    "Approve By": "Jane Smith",
-    "Recieve By": "Alice Johnson",
+    name: "no",
+    type: "number",
+    label: "Number #",
+    placeholder: "#12345",
   },
   {
-    NO: 2,
-    VA: "VA2",
-    Amount: "123.45",
-    Payment: "Cash",
-    Date: "05/23/2023",
-    Address: "456 Elm St",
-    Description: "Office supplies",
-    "Prepared By": "Michael Brown",
-    "Approve By": "Emily Davis",
-    "Recieve By": "Tom Wilson",
+    name: "vn",
+    type: "string",
+    label: "Voucher Number",
+    placeholder: "07722",
   },
   {
-    NO: 3,
-    VA: "VA3",
-    Amount: "789.01",
-    Payment: "Check",
-    Date: "03/11/2021",
-    Address: "789 Oak St",
-    Description: "Consulting fee",
-    "Prepared By": "Chris Martin",
-    "Approve By": "Emma Thompson",
-    "Recieve By": "Lucas White",
+    name: "amount",
+    type: "string",
+    label: "Amount",
+    placeholder: "$99M",
   },
   {
-    NO: 4,
-    VA: "VA4",
-    Amount: "234.56",
-    Payment: "Bank Transfer",
-    Date: "12/29/2022",
-    Address: "101 Pine St",
-    Description: "Subscription fee",
-    "Prepared By": "Laura Scott",
-    "Approve By": "Olivia Lee",
-    "Recieve By": "David Kim",
+    name: "date",
+    type: "date",
+    label: "Date",
+    placeholder: "08/07/2004",
   },
   {
-    NO: 5,
-    VA: "VA5",
-    Amount: "678.90",
-    Payment: "Credit Card",
-    Date: "09/17/2023",
-    Address: "202 Maple St",
-    Description: "Marketing services",
-    "Prepared By": "Sarah Wilson",
-    "Approve By": "Daniel Harris",
-    "Recieve By": "Sophia Clark",
+    name: "address",
+    type: "string",
+    label: "Address",
+    placeholder: "1234 Asawa Ni Marie NE",
   },
-  
-  
+  {
+    name: "paymentTo",
+    type: "string",
+    label: "Payment To",
+    placeholder: "Mr Jeje Pogi",
+  },
+  {
+    name : "descOfPayment",
+    type: "string",
+    label: "Description of Payment",
+    placeholder: "Mr Jeje Pogi",
+  },
+  {
+    name: "invoiceNo",
+    type: "number",
+    label: "Invoice No",
+    placeholder: "24425",
+  },
+  {
+    name: "checkNumber",
+    type: "number",
+    label: "Check Number",
+    placeholder: "22244455",
+  },
+  {
+    name: "preparedBy",
+    type: "string",
+    label: "Prepared By",
+    placeholder: "Mr Solis",
+  },
+  {
+    name: "accounting",
+    type: "string",
+    label: "Accounting",
+    placeholder: "Mrs Solis",
+  },
+  {
+    name: "printedName",
+    type: "string",
+    label: "Printed name",
+    placeholder: "Mrs Solis",
+  },
 ];
 
-export { fakeTableData , tableHeadData };
+//   name: "type",
+//   type: "select",
+//   label: "Type",
+//   option: [
+//     { value: "Active Materials", label: "Active Materials" },
+//     { value: "Non Active", label: "None Active" },
+//     { value: "Chemical", label: "Chemical" },
+//   ],
+// },
 
+export { initialCreateVoucherValues, VoucherInfoFieldsData, tableHeadData };

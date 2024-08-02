@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import { LandingLayout } from "./layout";
 import { Voucher } from "./pages";
 import { QueryClient, QueryClientProvider } from "react-query";
-
+import { CustomError } from "./components";
 
 import {
   createBrowserRouter,
@@ -12,7 +12,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-
 function App() {
   const client = new QueryClient();
 
@@ -20,7 +19,11 @@ function App() {
     createRoutesFromElements(
       <>
         <Route path="/" element={<LandingLayout />}>
-          <Route index element={<Voucher />} />
+          <Route 
+            index 
+            element={<Voucher />} 
+            // errorElement={<CustomError />}
+          />
         </Route>
       </>
     )

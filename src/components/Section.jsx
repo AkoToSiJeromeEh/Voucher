@@ -11,8 +11,8 @@ export const Section = ({
   );
 };
 Section.propTypes = {
-	style : PropTypes.number , 
-	children : PropTypes.string,
+	style : PropTypes.string , 
+	children : PropTypes.node,
 
 
 };

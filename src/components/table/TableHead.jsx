@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 export const TableHead = ({
 	tableData
 }) => {
+
   return (
     <tr className={` flex flex-col md:flex-row justify-between `}>
       {tableData?.map((head) => (
@@ -15,5 +16,5 @@ export const TableHead = ({
 };
 
 TableHead.propTypes = {
-  tableData: PropTypes.string,
+  tableData: PropTypes.array,
 };
